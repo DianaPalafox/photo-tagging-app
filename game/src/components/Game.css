@@ -1,0 +1,5 @@
+.game {
+    background: url('./img.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+}

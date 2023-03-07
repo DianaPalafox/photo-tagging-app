@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import './Header.css';
 
 function Timer() {
     const [seconds, setSeconds] = useState(0)

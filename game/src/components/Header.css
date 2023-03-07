@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+
+*{
+    margin: 0;
+    padding: 0; 
+}
+
+.header-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 25px 10px;
+    
+}
+
+.title {
+    color: rgb(255, 183, 183);
+    font-family: 'Tilt Neon', cursive;
+}
+
+.header {
+    background-color: black;
+    border: 1px solid black;
+}
+
+.timer-box {
+    font-size: 25px;
+    color: white;
+}
