@@ -1,5 +1,29 @@
 .game {
-    background: url('./img.jpeg') no-repeat center center fixed;
+    background: url('./images/img.jpeg') no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
+
+    position: relative;
+}
+
+.credit{
+    z-index: 100;
+    background-color: black;
+    width: 110px;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+    position: fixed;
+    bottom: 0;
+    right: 0;
+
+}
+
+.target-box{
+    border: 3px solid black;
+    width: 20px;
+    height: 20px;
 }

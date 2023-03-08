@@ -27,3 +27,28 @@
     font-size: 25px;
     color: white;
 }
+
+.characters {
+    display: flex;
+    gap: 30px;
+}
+
+.character1 {
+    background: url('./images/img1.jpeg');
+}
+
+.character2 {
+    background: url('./images/img2.jpeg');
+}
+
+.character3 {
+    background: url('./images/img3.jpeg');
+}
+
+.character1, .character2, .character3 {
+    background-size: contain;
+    height: 50px;
+    width: 50px;
+    border-radius: 20px;
+
+}
