@@ -1,23 +1,28 @@
 
 
-function Menu({ coords }) {
+function Menu({ coords, menu }) {
     const style = () => {
         return{
             position: 'absolute',
+            display: menu ? 'flex' : 'none',
             left: coords.x,
             top: coords.y,
-            width: 150,
-            height: 80,  
         }
     }
     return(
         <div className="menu" style={style()}>
-            <div className="menu-container">
-                <button className="img1">Img 1</button>
-                <button className="img1">Img 2</button>
-                <button className="img1">Img 3</button>
-            </div>
-
+            <button className="img1">
+                <div className="box-img1"></div>
+                <p className="char1">Character 1</p>
+            </button>
+            <button className="img1">
+                <div className="box-img2"></div>
+                <p className="char2">Character 2</p>
+            </button>
+            <button className="img1">
+                <div className="box-img3"></div>
+                <p className="char3">Character 3</p>
+            </button>
         </div>
     )
 }
