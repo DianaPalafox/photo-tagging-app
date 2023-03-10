@@ -1,12 +1,12 @@
 
 
-function Menu({ coords, menu }) {
+function Menu({ x, y , menu }) {
     const style = () => {
         return{
             position: 'absolute',
             display: menu ? 'flex' : 'none',
-            left: coords.x,
-            top: coords.y,
+            left: x,
+            top: y,
         }
     }
     return(

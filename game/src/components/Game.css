@@ -4,7 +4,9 @@
     height: 100vh;
 
     position: relative;
+    cursor: url(./images/target1.png), auto;
 }
+
 
 .credit{
     z-index: 100;
