@@ -1,7 +1,11 @@
 .game {
     background: url('./images/img.jpeg') no-repeat center center fixed;
     background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     height: 100vh;
+    width: 100vw;
 
     position: relative;
     cursor: url(./images/target1.png), auto;

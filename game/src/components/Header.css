@@ -5,12 +5,15 @@
     padding: 0; 
 }
 
+body {
+    overflow: hidden;
+  }
+
 .header-container{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 10px 25px 10px;
-    
 }
 
 .title {
