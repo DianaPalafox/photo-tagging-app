@@ -21,6 +21,8 @@ body {
     font-family: 'Tilt Neon', cursive;
 }
 
+a:link { text-decoration: none; }
+
 .header {
     background-color: black;
     border: 1px solid black;

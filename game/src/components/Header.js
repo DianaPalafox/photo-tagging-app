@@ -1,11 +1,14 @@
 import Timer from "./Timer";
 import './Header.css';
+import { Link } from "react-router-dom";
 
 function Header() {
     return (
-      <div className="header">
+      <header className="header">
         <div className="header-container">
-            <h1 className="title">Search and Find</h1>
+            <Link to='/'>
+              <h1 className="title">Search and Find</h1>
+            </Link>
             <div className="characters">
                 <div className="character1"></div>
                 <div className="character2"></div>
@@ -13,7 +16,7 @@ function Header() {
             </div>
             <Timer />
         </div>
-      </div>
+      </header>
     );
   }
   

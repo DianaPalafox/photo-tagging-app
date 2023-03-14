@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+
+header{
+    text-align: center;
+    background-color: black;
+    height: 80px;
+}
+
+.card-container{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.board{ 
+    padding-top: 50px;
+    width: 40vw;
+    height: auto;
+    border-radius: 10px;
+}
+
+.initial-page{
+    height: 100vh;
+    background-color:  rgb(255, 183, 183);;
+}
+
+header > h1{
+    color: rgb(255, 183, 183);
+    font-family: 'Tilt Neon', cursive;
+    padding-top: 20px;
+}
+
+.board:hover {
+    width: 45vw;
+}
+
+.card{
+    width: 45vw;
+    height: 65vh;
+    text-align: center;
+    background-color: black;
+    border-radius: 10px;
+}
+
+.title-card{
+    color: white;
+    font-family: 'Tilt Neon', cursive;
+    padding-top: 30px;
+}
