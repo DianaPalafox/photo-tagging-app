@@ -4,11 +4,20 @@ import React from "react";
 import { useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import ConnectToDatabase from '../firebase';
+import firstCharacter from './images/img1.jpeg'
+import secondCharacter from './images/img2.jpeg'
+import thirdCharacter from './images/img3.jpeg'
+import characterOne from './images/img1.1.jpeg'
+import characterTwo from './images/img2.2.jpeg'
+import characterThree from './images/img3.3.jpeg'
+import ContextMenu from './ContextMenu';
+
 
 const db = ConnectToDatabase();
 
-function Game() {
+function Game({ img, id }) {
     const [menu, setMenu] = useState(false)
+    const [board1, setBoard1] = useState(false)
     const [x, setX] = useState(0)
     const [y, setY] = useState(0)
     const [coords, setCoords] = useState({x: 0, y: 0});
@@ -27,16 +36,28 @@ function Game() {
             x: xCoord,
             y: yCoord,
         })
+        console.log(xCoord, yCoord)
+    }
+
+    function pickBoard(e) {
+        if(e.target.id === 'board1'){
+            setBoard1(true);
+        }
+        else if(e.target.id === 'board2'){
+            setBoard1(false);
+        }
+
     }
 
     function handleMenu(e){
-        e.nativeEvent.offsetX + 130 > window.innerWidth ? setX(`${window.innerWidth - 140}px`) : setX(e.nativeEvent.offsetX);
-        e.nativeEvent.offsetY + 150 > window.innerHeight ? setY(`${window.innerHeight - 280}px`) : setY(e.nativeEvent.offsetY)
+        e.nativeEvent.offsetX + 130 > window.innerWidth ? setX(`${window.innerWidth - 100}px`) : setX(e.nativeEvent.offsetX);
+        e.nativeEvent.offsetY + 150 > window.innerHeight ? setY(`${window.innerHeight - 200}px`) : setY(e.nativeEvent.offsetY)
         setMenu(prevMenu => !prevMenu);
     }
 
-    function getCharCoordData(characterName) {
-        const docRef = doc(db, "coordenadas", `${characterName}`);
+    function getCharCoordData(collection, characterName) {
+        const docRef = doc(db, `${collection}`, `${characterName}`);
+        console.log(collection)
         let docSnap;
         const charCoords = (async () => {
           docSnap = await getDoc(docRef);
@@ -52,7 +73,10 @@ function Game() {
 
       function characterSelected(e) {
         const characterName = e.target.id;
-        const charCoordData = getCharCoordData(characterName);
+        let charCoordData;
+        board1 ? charCoordData = getCharCoordData('coordenadas', characterName) : 
+        charCoordData = getCharCoordData('coordenadas2', characterName)
+        
 
         const checkClickedCoords = async () => {
             const charCoords = await charCoordData;
@@ -62,6 +86,7 @@ function Game() {
                 charCoords.y + 1 === coords.y || charCoords.y - 1 === coords.y)
             ){
                 foundCharacter(characterName)
+                console.log('found')
                 setMenu(false)
                 
             } else {
@@ -100,33 +125,37 @@ function Game() {
 
       function isGameover() {
           if(score === 2){
-            console.log('gameover')
             setGameover(true)   
           }
       }
 
     return (
-      <div className="game" onClick={(e) => handleCoordinates(e)} >
-          <Header />
+      <div className="game" id={id} onMouseMove={(e) => pickBoard(e)} onClick={(e) => handleCoordinates(e)} style={{backgroundImage: `url(${img})`}}>
+          {board1 ? <Header img1={firstCharacter} img2={secondCharacter} img3={thirdCharacter}/> :  
+          <Header img1={characterOne} img2={characterTwo} img3={characterThree}/> }
           {errorMessage && <div className='error-message'><h1>Oops! That's not the character</h1></div>}
-        {menu && <div className="menu" style={{
-            position: 'absolute',
-            left: x,
-            top: y,
-        }}>
-            {character1 && <button className="img1" id="character1" onClick={characterSelected}>
-                <div className="box-img1" id="character1"></div>
-                <p className="char1" id="character1">Character 1</p>
-            </button>}
-            {character2 && <button className="img1" id="character2" onClick={characterSelected}>
-                <div className="box-img2" id="character2"></div>
-                <p className="char2" id="character2">Character 2</p>
-            </button>}
-            {character3 && <button className="img1" id="character3" onClick={characterSelected}>
-                <div className="box-img3" id="character3"></div>
-                <p className="char3" id="character3">Character 3</p>
-            </button>}
-        </div>}
+        {board1 ? <ContextMenu 
+        x={x} y={y} 
+        characterSelected={(e) => characterSelected(e)}
+        character1={character1}
+        character2={character2}
+        character3={character3}
+        showMenu={menu}
+        img1={firstCharacter}
+        img2={secondCharacter}
+        img3={thirdCharacter}
+        /> : 
+        <ContextMenu 
+        x={x} y={y} 
+        characterSelected={(e) => characterSelected(e)}
+        character1={character1}
+        character2={character2}
+        character3={character3}
+        showMenu={menu}
+        img1={characterOne}
+        img2={characterTwo}
+        img3={characterThree}
+        />} 
         <div className='credit'><p>Image by Marija Tiurina</p></div>
       </div>
     );
