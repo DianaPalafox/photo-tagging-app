@@ -11,6 +11,7 @@ import characterOne from './images/img1.1.jpeg'
 import characterTwo from './images/img2.2.jpeg'
 import characterThree from './images/img3.3.jpeg'
 import ContextMenu from './ContextMenu';
+import ModalForm from './ModalForm';
 
 
 const db = ConnectToDatabase();
@@ -25,6 +26,7 @@ function Game({ img, id }) {
     const [character2, setCharacter2] = useState(true)
     const [character3, setCharacter3] = useState(true)
     const [errorMessage, setErrorMessage] = useState(false)
+    const [goodJobMessage, setGoodJobMessage] = useState(false)
     const [gameover, setGameover] = useState(false)
     const [score, setScore] = useState(0)
 
@@ -86,35 +88,36 @@ function Game({ img, id }) {
                 charCoords.y + 1 === coords.y || charCoords.y - 1 === coords.y)
             ){
                 foundCharacter(characterName)
-                console.log('found')
+                setGoodJobMessage(true)
                 setMenu(false)
+                timeoutMessage()
                 
             } else {
                 setErrorMessage(true)
                 setMenu(false)
-                timeoutErrorMessage()
-
+                timeoutMessage()
             }        
         }
         checkClickedCoords();
       }
 
-      function timeoutErrorMessage() {
+      function timeoutMessage() {
           const timer = setTimeout(() => {
               setErrorMessage(false)
+              setGoodJobMessage(false)
           }, 3000);
           return () => clearTimeout(timer)
       }
 
-
+      
       function foundCharacter(characterName) {
           if(characterName === 'character1'){
-              setCharacter1(false)
-              setScore(score + 1)
+            setCharacter1(false)
+            setScore(score + 1)
           }
           else if(characterName === 'character2'){
-              setCharacter2(false)
-              setScore(score + 1)
+            setCharacter2(false)
+            setScore(score + 1)
           }
           else if(characterName === 'character3'){
             setCharacter3(false)
@@ -134,6 +137,8 @@ function Game({ img, id }) {
           {board1 ? <Header img1={firstCharacter} img2={secondCharacter} img3={thirdCharacter}/> :  
           <Header img1={characterOne} img2={characterTwo} img3={characterThree}/> }
           {errorMessage && <div className='error-message'><h1>Oops! That's not the character</h1></div>}
+          {goodJobMessage && score < 3 ? <div className='good-job-message'><h1>Good job! You've found {score} of the characters</h1></div> :
+          goodJobMessage && <div className='good-job-message'><h1>Good job! You've found ALL of the characters</h1></div>}
         {board1 ? <ContextMenu 
         x={x} y={y} 
         characterSelected={(e) => characterSelected(e)}
@@ -156,6 +161,7 @@ function Game({ img, id }) {
         img2={characterTwo}
         img3={characterThree}
         />} 
+        {gameover && <ModalForm />}
         <div className='credit'><p>Image by Marija Tiurina</p></div>
       </div>
     );
