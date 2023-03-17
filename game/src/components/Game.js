@@ -1,4 +1,4 @@
-import './Game.css';
+import './assets/Game.css';
 import Header from "./Header";
 import React from "react";
 import { useState } from "react";

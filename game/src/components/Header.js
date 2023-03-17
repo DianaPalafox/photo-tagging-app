@@ -1,5 +1,5 @@
 import Timer from "./Timer";
-import './Header.css';
+import './assets/Header.css';
 import { Link } from "react-router-dom";
 
 function Header({ img1, img2, img3}) {

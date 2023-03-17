@@ -1,7 +1,7 @@
 import Card from "../components/Card";
 import board1 from "../components/images/board1.jpeg"
 import board2 from "../components/images/board2.jpeg"
-import '../components/InitialPage.css'
+import '../components/assets/InitialPage.css'
 import { Link } from "react-router-dom";
 
 function InitialPage() {

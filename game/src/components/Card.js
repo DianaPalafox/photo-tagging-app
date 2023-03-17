@@ -1,4 +1,4 @@
-import '../components/InitialPage.css'
+import '../components/assets/InitialPage.css'
 
 function Card({ img, title, id }) {
     return (

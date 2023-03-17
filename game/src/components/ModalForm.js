@@ -1,4 +1,4 @@
-import './Modal.css'
+import './assets/Modal.css'
 import { useState } from 'react'
 import { addDoc,collection } from 'firebase/firestore'
 import ConnectToDatabase from '../firebase'

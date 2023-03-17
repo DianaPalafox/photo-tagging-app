@@ -7,7 +7,7 @@
     width: 100vw;
 
     position: relative;
-    cursor: url(./images/target1.png), auto;
+    cursor: url(../images/target1.png), auto;
     overflow: hidden;
 }
 
