@@ -1,7 +1,7 @@
 import './assets/Game.css';
 import Header from "./Header";
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import ConnectToDatabase from '../firebase';
 import firstCharacter from './images/img1.jpeg'
@@ -12,11 +12,12 @@ import characterTwo from './images/img2.2.jpeg'
 import characterThree from './images/img3.3.jpeg'
 import ContextMenu from './ContextMenu';
 import ModalForm from './ModalForm';
-
+import TimerContext from './context/Timer';
 
 const db = ConnectToDatabase();
 
 function Game({ img, id }) {
+    const { setIsActive } = useContext(TimerContext);
     const [menu, setMenu] = useState(false)
     const [board1, setBoard1] = useState(false)
     const [x, setX] = useState(0)
@@ -38,7 +39,6 @@ function Game({ img, id }) {
             x: xCoord,
             y: yCoord,
         })
-        console.log(xCoord, yCoord)
     }
 
     function pickBoard(e) {
@@ -128,38 +128,49 @@ function Game({ img, id }) {
 
       function isGameover() {
           if(score === 2){
-            setGameover(true)   
+            setGameover(true) 
+            setIsActive(false)  
           }
       }
 
     return (
       <div className="game" id={id} onMouseMove={(e) => pickBoard(e)} onClick={(e) => handleCoordinates(e)} style={{backgroundImage: `url(${img})`}}>
-          {board1 ? <Header img1={firstCharacter} img2={secondCharacter} img3={thirdCharacter}/> :  
-          <Header img1={characterOne} img2={characterTwo} img3={characterThree}/> }
-          {errorMessage && <div className='error-message'><h1>Oops! That's not the character</h1></div>}
-          {goodJobMessage && score < 3 ? <div className='good-job-message'><h1>Good job! You've found {score} of the characters</h1></div> :
-          goodJobMessage && <div className='good-job-message'><h1>Good job! You've found ALL of the characters</h1></div>}
+          {board1 ? 
+          <Header 
+            img1={firstCharacter} 
+            img2={secondCharacter} 
+            img3={thirdCharacter}/> :  
+          <Header 
+            img1={characterOne} 
+            img2={characterTwo} 
+            img3={characterThree}/> }
+          {errorMessage && 
+          <div className='error-message'><h1>Oops! That's not the character</h1></div>}
+          {goodJobMessage && score < 3 ? 
+          <div className='good-job-message'><h1>Good job! You've found {score} of the characters</h1></div> :
+          goodJobMessage && 
+          <div className='good-job-message'><h1>Good job! You've found ALL of the characters</h1></div>}
         {board1 ? <ContextMenu 
-        x={x} y={y} 
-        characterSelected={(e) => characterSelected(e)}
-        character1={character1}
-        character2={character2}
-        character3={character3}
-        showMenu={menu}
-        img1={firstCharacter}
-        img2={secondCharacter}
-        img3={thirdCharacter}
+          x={x} y={y} 
+          characterSelected={(e) => characterSelected(e)}
+          character1={character1}
+          character2={character2}
+          character3={character3}
+          showMenu={menu}
+          img1={firstCharacter}
+          img2={secondCharacter}
+          img3={thirdCharacter}
         /> : 
         <ContextMenu 
         x={x} y={y} 
-        characterSelected={(e) => characterSelected(e)}
-        character1={character1}
-        character2={character2}
-        character3={character3}
-        showMenu={menu}
-        img1={characterOne}
-        img2={characterTwo}
-        img3={characterThree}
+          characterSelected={(e) => characterSelected(e)}
+          character1={character1}
+          character2={character2}
+          character3={character3}
+          showMenu={menu}
+          img1={characterOne}
+          img2={characterTwo}
+          img3={characterThree}
         />} 
         {gameover && <ModalForm />}
         <div className='credit'><p>Image by Marija Tiurina</p></div>

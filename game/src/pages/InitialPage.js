@@ -4,6 +4,7 @@ import board2 from "../components/images/board2.jpeg"
 import '../components/assets/InitialPage.css'
 import { Link } from "react-router-dom";
 
+
 function InitialPage() {
     return (
       <div className="initial-page">
@@ -12,10 +13,10 @@ function InitialPage() {
         </header>
         <div className="card-container">
             <Link to='/board1'>
-                <Card id={'board1'} title={'Entertainment Valley'} img={board1}/>
+                <Card id={'board1'} title={'Entertainment Valley'} img={board1} />
             </Link>
             <Link to='/board2'>
-                <Card id={'board2'} title={'Tech City'} img={board2}/>
+                <Card id={'board2'} title={'Tech City'} img={board2} />
             </Link>
         </div>
         
