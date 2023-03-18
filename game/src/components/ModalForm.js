@@ -26,9 +26,18 @@ function ModalForm() {
         }catch(e){
             console.error('Error adding document: ', e);
         }
-        setIsOpen(true)
+        inputValidation()
         setUsername('')
-        
+    }
+
+    function inputValidation() {
+        if(username.trim().length !== 0){
+            setIsOpen(true)
+        }
+        else{
+            setIsOpen(false)
+            alert('Please input a username')
+        }
     }
     
     const q = query(collection(db, 'leaderboard'), where("minutes", "==", 0), orderBy("seconds", "asc"), limit(15))
