@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/photo-tagging-app/static/css/main.fa7efda2.css",
-    "main.js": "/photo-tagging-app/static/js/main.76f14c43.js",
+    "main.js": "/photo-tagging-app/static/js/main.ca74424f.js",
     "static/media/board1.jpeg": "/photo-tagging-app/static/media/board1.80ea16f9964df7befd66.jpeg",
     "static/media/board2.jpeg": "/photo-tagging-app/static/media/board2.d1623e0ba209c2f4c6e7.jpeg",
     "static/media/img2.2.jpeg": "/photo-tagging-app/static/media/img2.2.cd5660c37db83f5c9898.jpeg",
@@ -12,10 +12,10 @@
     "static/media/img1.1.jpeg": "/photo-tagging-app/static/media/img1.1.d6b90953167bbcce02e3.jpeg",
     "index.html": "/photo-tagging-app/index.html",
     "main.fa7efda2.css.map": "/photo-tagging-app/static/css/main.fa7efda2.css.map",
-    "main.76f14c43.js.map": "/photo-tagging-app/static/js/main.76f14c43.js.map"
+    "main.ca74424f.js.map": "/photo-tagging-app/static/js/main.ca74424f.js.map"
   },
   "entrypoints": [
     "static/css/main.fa7efda2.css",
-    "static/js/main.76f14c43.js"
+    "static/js/main.ca74424f.js"
   ]
 }
