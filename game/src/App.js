@@ -1,4 +1,4 @@
-import Game from "./components/Game";
+import Game from "./pages/Game";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import InitialPage from "./pages/InitialPage";
 import board1 from '../src/components/images/board1.jpeg'
@@ -7,7 +7,7 @@ import board2 from '../src/components/images/board2.jpeg'
 function App() {
 
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <div className="App">
       <Routes>
         <Route path='/' element={<InitialPage />}/>

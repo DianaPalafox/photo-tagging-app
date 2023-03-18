@@ -1,18 +1,18 @@
-import './assets/Game.css';
-import Header from "./Header";
+import '../components/assets/Game.css';
+import Header from "../components/Header";
 import React from "react";
 import { useState, useContext } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import ConnectToDatabase from '../firebase';
-import firstCharacter from './images/img1.jpeg'
-import secondCharacter from './images/img2.jpeg'
-import thirdCharacter from './images/img3.jpeg'
-import characterOne from './images/img1.1.jpeg'
-import characterTwo from './images/img2.2.jpeg'
-import characterThree from './images/img3.3.jpeg'
-import ContextMenu from './ContextMenu';
-import ModalForm from './ModalForm';
-import TimerContext from './context/Timer';
+import firstCharacter from '../components/images/img1.jpeg'
+import secondCharacter from '../components/images/img2.jpeg'
+import thirdCharacter from '../components/images/img3.jpeg'
+import characterOne from '../components/images/img1.1.jpeg'
+import characterTwo from '../components/images/img2.2.jpeg'
+import characterThree from '../components/images/img3.3.jpeg'
+import ContextMenu from '../components/ContextMenu';
+import ModalForm from '../components/ModalForm';
+import TimerContext from '../components/context/Timer';
 
 const db = ConnectToDatabase();
 
