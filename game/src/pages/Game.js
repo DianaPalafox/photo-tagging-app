@@ -87,8 +87,7 @@ function Game({ img, id }) {
             const charCoords = await charCoordData;
             if(
                 (charCoords.x === coords.x || charCoords.x + 0.01 === coords.x ||
-                charCoords.x - 0.01 === coords.x) //&& (charCoords.y === coords.y || 
-                //charCoords.y + 0.01 === coords.y || charCoords.y - 0.01 === coords.y)
+                charCoords.x - 0.01 === coords.x) 
             ){
                 foundCharacter(characterName)
                 setGoodJobMessage(true)
