@@ -31,14 +31,18 @@ function Game({ img, id }) {
     const [gameover, setGameover] = useState(false)
     const [score, setScore] = useState(0)
 
+
     function handleCoordinates(e) {
-        const xCoord = Math.round((e.nativeEvent.offsetX / e.nativeEvent.target.offsetWidth) * 100);
-        const yCoord = Math.round((e.nativeEvent.offsetY / e.nativeEvent.target.offsetHeight) * 100);
-        handleMenu(e)
+        const xCoord = (e.nativeEvent.offsetX / e.nativeEvent.target.offsetWidth);
+        const yCoord = (e.nativeEvent.offsetY / e.nativeEvent.target.offsetHeight);
+        
+        const xRel = Number(xCoord.toFixed(2))
+        const yRel = Number(yCoord.toFixed(2))
         setCoords({
-            x: xCoord,
-            y: yCoord,
+            x: xRel,
+            y: yRel,
         })
+        handleMenu(e)
     }
 
     function pickBoard(e) {
@@ -59,7 +63,6 @@ function Game({ img, id }) {
 
     function getCharCoordData(collection, characterName) {
         const docRef = doc(db, `${collection}`, `${characterName}`);
-        console.log(collection)
         let docSnap;
         const charCoords = (async () => {
           docSnap = await getDoc(docRef);
@@ -83,9 +86,9 @@ function Game({ img, id }) {
         const checkClickedCoords = async () => {
             const charCoords = await charCoordData;
             if(
-                (charCoords.x === coords.x || charCoords.x + 1 === coords.x ||
-                charCoords.x - 1 === coords.x) && (charCoords.y === coords.y || 
-                charCoords.y + 1 === coords.y || charCoords.y - 1 === coords.y)
+                (charCoords.x === coords.x || charCoords.x + 0.01 === coords.x ||
+                charCoords.x - 0.01 === coords.x) //&& (charCoords.y === coords.y || 
+                //charCoords.y + 0.01 === coords.y || charCoords.y - 0.01 === coords.y)
             ){
                 foundCharacter(characterName)
                 setGoodJobMessage(true)
